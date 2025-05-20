@@ -1,16 +1,28 @@
 [project]
 name = "agent"
 version = "0.0.1"
-description = "Starter template for making a new agent LangGraph."
-authors = [
-    { name = "William Fu-Hinthorn", email = "13333726+hinthornw@users.noreply.github.com" },
-]
+description = "Hubspot LangGraph agent."
+authors = [{ name = "Kevin Didelot", email = "kevin@keltio.com" }]
 readme = "README.md"
 license = { text = "MIT" }
 requires-python = ">=3.9"
 dependencies = [
-    "langgraph>=0.2.6",
-    "python-dotenv>=1.0.1",
+  "langgraph>=0.2.6",
+  "langchain==0.3.25",
+  "langchain-core==0.3.60",
+  "langchain-text-splitters==0.3.8",
+  "langgraph-checkpoint==2.0.26",
+  "langgraph-prebuilt==0.1.8",
+  "langgraph-sdk==0.1.69",
+  "langsmith==0.3.42",
+  "langgraph-cli==0.2.10",
+  "langgraph-sdk==0.1.69",
+  "langchain-tavily==0.1.6",
+  "langchain-openai==0.3.17",
+  "openai==1.79.0",
+  "pydantic==2.11.4",
+  "pydantic_core==2.33.2",
+  "python-dotenv>=1.0.1",
 ]
 
 
@@ -33,22 +45,22 @@ packages = ["langgraph.templates.agent", "agent"]
 
 [tool.ruff]
 lint.select = [
-    "E",    # pycodestyle
-    "F",    # pyflakes
-    "I",    # isort
-    "D",    # pydocstyle
-    "D401", # First line should be in imperative mood
-    "T201",
-    "UP",
+  "E",    # pycodestyle
+  "F",    # pyflakes
+  "I",    # isort
+  "D",    # pydocstyle
+  "D401", # First line should be in imperative mood
+  "T201",
+  "UP",
 ]
 lint.ignore = [
-    "UP006",
-    "UP007",
-    # We actually do want to import from typing_extensions
-    "UP035",
-    # Relax the convention by _not_ requiring documentation for every function parameter.
-    "D417",
-    "E501",
+  "UP006",
+  "UP007",
+  # We actually do want to import from typing_extensions
+  "UP035",
+  # Relax the convention by _not_ requiring documentation for every function parameter.
+  "D417",
+  "E501",
 ]
 [tool.ruff.lint.per-file-ignores]
 "tests/*" = ["D", "UP"]
@@ -57,9 +69,9 @@ convention = "google"
 
 [dependency-groups]
 dev = [
-    "anyio>=4.7.0",
-    "langgraph-cli[inmem]>=0.2.8",
-    "mypy>=1.13.0",
-    "pytest>=8.3.5",
-    "ruff>=0.8.2",
+  "anyio>=4.7.0",
+  "langgraph-cli[inmem]>=0.2.8",
+  "mypy>=1.13.0",
+  "pytest>=8.3.5",
+  "ruff>=0.8.2",
 ]
