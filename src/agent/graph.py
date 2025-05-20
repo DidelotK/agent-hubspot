@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 
-from langgraph.graph import StateGraph, START, END
+from langgraph.graph import START, MessagesState, StateGraph
 
 from langchain.chat_models import init_chat_model
 from langchain_tavily import TavilySearch
@@ -28,7 +28,7 @@ user_id = "1"
 namespace_for_internal_knowledge = (user_id, "internal_knowledge")
 
 
-def chatNode(state: State, config: RunnableConfig, store: BaseStore):
+def chatNode(state: MessagesState, config: RunnableConfig, store: BaseStore):
     data = {}
     user_id = config["configurable"]["user_id"]
     print(f"user_id: {user_id}")
@@ -45,7 +45,7 @@ def chatNode(state: State, config: RunnableConfig, store: BaseStore):
 
 tool_node = ToolNode(tools=tools)
 graph = (
-    StateGraph(State)
+    StateGraph(MessagesState)
     .add_node("chatbot", chatNode)
     .add_node("tools", tool_node)
     .add_conditional_edges(
