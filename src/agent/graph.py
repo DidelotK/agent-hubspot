@@ -54,7 +54,7 @@ graph = (
     )
     .add_edge("tools", "chatbot")
     .add_edge(START, "chatbot")
-    .compile(name="hubspot-agent-graph")
+    .compile()
 )
 
 # La première fois que l'agent est lancé, il va demander à l'utilisateur des informations sur sa façon de gérer son CRM
